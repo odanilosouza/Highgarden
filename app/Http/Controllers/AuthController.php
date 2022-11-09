@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\View;
 
 class AuthController extends Controller
@@ -30,6 +29,16 @@ class AuthController extends Controller
     {
         var_dump($request->all());
 
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
+
+        if (Auth::attempt($credentials)) {
+            return Redirect()->route('admin');
+        }
+        return Redirect()->back()->withErrors(['Os dados não conferem! ']);
+
     }
 
     public function logout()
@@ -41,20 +50,6 @@ class AuthController extends Controller
     public function home()
     {
         return View('register');
-    }
-
-    public function register(Request $request)
-    {
-        // $array = ['error' => ''];
-        // $validator = Validator::make($request->all(), [
-        //     'name' => 'required',
-        //     'email' => 'required|email|unique:users,email',
-        //     'cpf' => 'required|digits:11|unique:users,cpf',
-        //     'password' => 'required',
-        //     'password_confirm' => 'required|same:password',
-
-        // ]);
-
     }
 
 }

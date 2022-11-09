@@ -26,6 +26,3 @@ Route::get('/admin', [App\Http\Controllers\AuthController::class, 'dashboard'])-
 Route::get('/admin/login', [App\Http\Controllers\AuthController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login/do', [App\Http\Controllers\AuthController::class, 'login'])->name('admin.login.do');
 Route::get('/admin/logout', [App\Http\Controllers\AuthController::class, 'logout'])->name('admin.logout');
-
-Route::post('/register', [App\Http\Controllers\AuthController::class, 'home']);
-Route::get('/register', [App\Http\Controllers\AuthController::class, 'home']);
