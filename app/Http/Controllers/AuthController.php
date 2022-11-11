@@ -49,7 +49,7 @@ class AuthController extends Controller
 
     public function home()
     {
-        return View('register');
+        return view('home');
     }
 
 }
